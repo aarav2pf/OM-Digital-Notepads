@@ -1,0 +1,12 @@
+{
+  "name": "digital-notepad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Digital Notepad for Outstation Management",
+  "scripts": {
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "npm --prefix backend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "backend:start": "npm --prefix backend start"
+  }
+}
