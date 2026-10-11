@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS notepads (
 
     oc_poc TEXT,
     oc_poc_contact TEXT,
+    notepad_filled_by TEXT,
 
     duration TEXT,
     arrival_date DATE,
@@ -43,7 +44,6 @@ CREATE TABLE IF NOT EXISTS notepads (
 
     deleted_at TIMESTAMPTZ DEFAULT NULL
 );
-
 
 -- ============================================
 -- SUPERADMINS
@@ -61,7 +61,6 @@ CREATE TABLE IF NOT EXISTS superadmins (
     is_active BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-
 -- ============================================
 -- UNIQUE EMAIL
 -- Case-insensitive uniqueness for Superadmins
@@ -70,7 +69,6 @@ CREATE TABLE IF NOT EXISTS superadmins (
 CREATE UNIQUE INDEX IF NOT EXISTS
 superadmins_email_unique
 ON superadmins (LOWER(email));
-
 
 -- ============================================
 -- INDEXES
@@ -87,7 +85,6 @@ ON notepads (deleted_at);
 CREATE INDEX IF NOT EXISTS
 superadmins_active_idx
 ON superadmins (is_active);
-
 
 -- ============================================
 -- ROW LEVEL SECURITY

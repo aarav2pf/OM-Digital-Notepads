@@ -5,9 +5,7 @@
   font-synthesis: none;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -15,15 +13,8 @@ body {
   background: #0b0b0c;
 }
 
-button,
-input,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
 
 .app-shell {
   min-height: 100vh;
@@ -56,8 +47,7 @@ button {
   gap: 9px;
 }
 
-.create-btn,
-.primary-action {
+.create-btn, .primary-action {
   border: 0;
   background: #f4f4f5;
   color: #111113;
@@ -69,16 +59,8 @@ button {
   font-weight: 700;
 }
 
-.create-btn:hover,
-.primary-action:hover {
-  background: #d9d9dc;
-}
-
-.create-btn:disabled,
-.primary-action:disabled {
-  opacity: .6;
-  cursor: not-allowed;
-}
+.create-btn:hover, .primary-action:hover { background: #d9d9dc; }
+.create-btn:disabled, .primary-action:disabled { opacity: .6; cursor: not-allowed; }
 
 .extra-btn {
   border: 1px solid #303034;
@@ -88,10 +70,7 @@ button {
   border-radius: 8px;
 }
 
-.extra-btn:hover {
-  background: #222225;
-  color: #fff;
-}
+.extra-btn:hover { background: #222225; color: #fff; }
 
 .toolbar {
   display: flex;
@@ -123,15 +102,9 @@ button {
   color: #f4f4f5;
 }
 
-.search-wrap input::placeholder {
-  color: #6f6f75;
-}
+.search-wrap input::placeholder { color: #6f6f75; }
 
-.icon-btn,
-.close-btn,
-.back-btn,
-.sort-btn,
-.sort-menu button {
+.icon-btn, .close-btn, .back-btn, .sort-btn, .sort-menu button {
   border: 0;
   background: transparent;
   color: inherit;
@@ -143,9 +116,7 @@ button {
   padding: 4px;
 }
 
-.sort-wrap {
-  position: relative;
-}
+.sort-wrap { position: relative; }
 
 .sort-btn {
   height: 46px;
@@ -182,8 +153,7 @@ button {
   color: #c9c9cd;
 }
 
-.sort-menu button:hover,
-.sort-menu .selected {
+.sort-menu button:hover, .sort-menu .selected {
   background: #262629;
   color: #fff;
 }
@@ -207,9 +177,7 @@ button {
   margin: 5px 0 30px;
 }
 
-.date-section {
-  margin: 0 0 42px;
-}
+.date-section { margin: 0 0 42px; }
 
 .date-heading {
   font-size: 16px;
@@ -218,9 +186,7 @@ button {
   color: #ededf0;
 }
 
-.row-shell {
-  position: relative;
-}
+.row-shell { position: relative; }
 
 .notepad-row {
   display: flex;
@@ -232,10 +198,7 @@ button {
   scrollbar-color: #38383c transparent;
 }
 
-.card {
-  width: 180px;
-  flex: 0 0 180px;
-}
+.card { width: 180px; flex: 0 0 180px; }
 
 .thumbnail-wrap {
   height: 245px;
@@ -285,15 +248,8 @@ button {
   font-size: 11px;
 }
 
-.hover-actions button:hover {
-  background: #fff;
-  color: #111;
-}
-
-.hover-actions .delete-hover:hover {
-  background: #d7a0a0;
-  color: #181111;
-}
+.hover-actions button:hover { background: #fff; color: #111; }
+.hover-actions .delete-hover:hover { background: #d7a0a0; color: #181111; }
 
 .card-title {
   font-size: 13px;
@@ -305,17 +261,33 @@ button {
   text-overflow: ellipsis;
 }
 
-.card-time {
-  font-size: 11px;
-  color: #66666d;
-  margin-top: 3px;
+.card-time { font-size: 11px; color: #66666d; margin-top: 3px; }
+
+
+/* Homepage: remove the separate Edit/Delete row below each card */
+.card-bottom-actions {
+  display: none !important;
 }
 
-.state {
-  color: #74747a;
-  padding: 80px 0;
-  text-align: center;
+
+.card-bottom-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #38383d;
+  border-radius: 6px;
+  background: #171719;
+  color: #d8d8dc;
+  padding: 6px 9px;
+  font-size: 11px;
+  cursor: pointer;
 }
+
+.card-bottom-actions button:hover { background: #29292d; }
+.card-bottom-actions .card-delete-action { color: #e4b0b0; }
+
+.state { color: #74747a; padding: 80px 0; text-align: center; }
 
 .error-banner {
   background: #2a1717;
@@ -345,9 +317,7 @@ button {
   font-size: 12px;
 }
 
-.trash-link:hover {
-  color: #bcbcc2;
-}
+.trash-link:hover { color: #bcbcc2; }
 
 .modal-backdrop {
   position: fixed;
@@ -358,14 +328,8 @@ button {
   padding: 24px;
 }
 
-/*
- * Trash and Superadmin screens use a completely
- * solid background so the content underneath
- * cannot interfere with readability.
- */
-.solid-modal-backdrop {
-  background: #0b0b0c;
-}
+/* Trash and Superadmin screens use a solid background. */
+.solid-modal-backdrop { background: #0b0b0c; }
 
 .notepad-modal {
   width: min(900px, 100%);
@@ -373,6 +337,19 @@ button {
   min-height: 100%;
   position: relative;
 }
+
+.validation-banner {
+  margin: 0 0 12px;
+  padding: 11px 13px;
+  border: 1px solid #8a4d3e;
+  border-radius: 7px;
+  background: #351d19;
+  color: #ffd0c4;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.required-field > span { color: #252323; }
 
 .modal-top {
   height: 56px;
@@ -389,14 +366,8 @@ button {
   padding: 7px;
 }
 
-.close-btn {
-  padding: 7px;
-}
-
-.save-state {
-  font-size: 12px;
-  color: #7e7e85;
-}
+.close-btn { padding: 7px; }
+.save-state { font-size: 12px; color: #7e7e85; }
 
 .paper {
   position: relative;
@@ -437,10 +408,7 @@ button {
   z-index: 2;
 }
 
-.paper-rings span {
-  color: #272525;
-  transform: scaleX(.7);
-}
+.paper-rings span { color: #272525; transform: scaleX(.7); }
 
 .paper-inner {
   padding: 24px 65px 60px 105px;
@@ -469,15 +437,13 @@ button {
   min-height: 48px;
 }
 
-.field > span,
-.rooms-label {
+.field > span, .rooms-label {
   font-family: "Comic Sans MS", "Segoe Print", cursive;
   font-weight: 700;
   font-size: 15px;
 }
 
-.field input,
-.field textarea {
+.field input, .field select, .field textarea {
   width: 100%;
   border: 0;
   border-bottom: 1px solid #555;
@@ -488,14 +454,12 @@ button {
   border-radius: 2px;
 }
 
-.field input:focus,
-.field textarea:focus {
+.field input:focus, .field select:focus, .field textarea:focus {
   border-bottom: 2px solid #333;
   background: rgba(255, 255, 255, .3);
 }
 
-.field input:disabled,
-.field textarea:disabled {
+.field input:disabled, .field select:disabled, .field textarea:disabled {
   color: #252525;
   opacity: 1;
 }
@@ -512,13 +476,8 @@ button {
   );
 }
 
-.textarea-field {
-  align-items: start;
-}
-
-.textarea-field > span {
-  padding-top: 7px;
-}
+.textarea-field { align-items: start; }
+.textarea-field > span { padding-top: 7px; }
 
 .two-col {
   display: grid;
@@ -549,14 +508,18 @@ button {
   font-family: system-ui, sans-serif;
 }
 
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding: 14px 0;
+.modal-footer { display: flex; justify-content: flex-end; padding: 14px 0; }
+
+.modal-footer-actions { gap: 10px; padding-bottom: 26px; }
+
+.modal-footer-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 
-.confirm-backdrop,
-.light-confirm-backdrop {
+.confirm-backdrop, .light-confirm-backdrop {
   position: absolute;
   inset: 56px 0 0;
   display: grid;
@@ -581,15 +544,8 @@ button {
   box-shadow: 0 30px 80px #000;
 }
 
-.confirm-box h2 {
-  margin: 0 0 8px;
-  font-size: 19px;
-}
-
-.confirm-box p {
-  color: #a4a4aa;
-  line-height: 1.5;
-}
+.confirm-box h2 { margin: 0 0 8px; font-size: 19px; }
+.confirm-box p { color: #a4a4aa; line-height: 1.5; }
 
 .confirm-actions {
   display: flex;
@@ -614,10 +570,7 @@ button {
   padding: 10px 13px;
 }
 
-.danger-action:hover {
-  background: #482020;
-  color: #fff;
-}
+.danger-action:hover { background: #482020; color: #fff; }
 
 .trash-modal {
   width: min(900px, 100%);
@@ -634,25 +587,11 @@ button {
   color: #bbbcc2;
 }
 
-.trash-title {
-  padding: 25px 0 28px;
-}
+.trash-title { padding: 25px 0 28px; }
+.trash-title h2 { margin: 8px 0 5px; font-size: 27px; }
+.trash-title p { margin: 0; color: #66666d; font-size: 13px; }
 
-.trash-title h2 {
-  margin: 8px 0 5px;
-  font-size: 27px;
-}
-
-.trash-title p {
-  margin: 0;
-  color: #66666d;
-  font-size: 13px;
-}
-
-.trash-list {
-  display: grid;
-  gap: 10px;
-}
+.trash-list { display: grid; gap: 10px; }
 
 .trash-item {
   display: flex;
@@ -665,17 +604,8 @@ button {
   background: #121214;
 }
 
-.trash-item-title {
-  color: #ddd;
-  font-size: 13px;
-  font-weight: 650;
-}
-
-.trash-item-time {
-  margin-top: 5px;
-  color: #626269;
-  font-size: 10px;
-}
+.trash-item-title { color: #ddd; font-size: 13px; font-weight: 650; }
+.trash-item-time { margin-top: 5px; color: #626269; font-size: 10px; }
 
 .restore-btn {
   border: 1px solid #3b3b3f;
@@ -685,10 +615,7 @@ button {
   padding: 9px 13px;
 }
 
-.restore-btn:hover {
-  background: #29292d;
-  color: #fff;
-}
+.restore-btn:hover { background: #29292d; color: #fff; }
 
 .trash-empty {
   padding: 70px 0;
@@ -705,9 +632,7 @@ button {
   position: relative;
 }
 
-.admin-content {
-  padding: 30px 0 50px;
-}
+.admin-content { padding: 30px 0 50px; }
 
 .admin-description {
   color: #66666d;
@@ -715,10 +640,7 @@ button {
   margin: 7px 0 22px;
 }
 
-.admin-form {
-  display: flex;
-  gap: 8px;
-}
+.admin-form { display: flex; gap: 8px; }
 
 .admin-form input {
   flex: 1;
@@ -730,11 +652,7 @@ button {
   outline: 0;
 }
 
-.admin-list {
-  display: grid;
-  gap: 8px;
-  margin-top: 25px;
-}
+.admin-list { display: grid; gap: 8px; margin-top: 25px; }
 
 .admin-item {
   display: flex;
@@ -752,10 +670,7 @@ button {
   font-size: 13px;
 }
 
-.admin-status {
-  color: #777;
-  font-size: 11px;
-}
+.admin-status { color: #777; font-size: 11px; }
 
 .admin-remove {
   border: 1px solid #503333;
@@ -765,22 +680,14 @@ button {
   padding: 6px 9px;
 }
 
-.admin-message {
-  margin-top: 10px;
-  color: #888;
-  font-size: 12px;
-}
+.admin-message { margin-top: 10px; color: #888; font-size: 12px; }
 
 .auth-page {
   min-height: 100vh;
   display: grid;
   place-items: center;
   padding: 25px;
-  background: radial-gradient(
-    circle at top,
-    #171719 0,
-    #0b0b0c 42%
-  );
+  background: radial-gradient(circle at top, #171719 0, #0b0b0c 42%);
 }
 
 .auth-card {
@@ -800,16 +707,8 @@ button {
   margin-bottom: 8px;
 }
 
-.auth-card h1 {
-  margin: 0;
-  font-size: 25px;
-  letter-spacing: .08em;
-}
-
-.auth-card p {
-  color: #66666d;
-  font-size: 13px;
-}
+.auth-card h1 { margin: 0; font-size: 25px; letter-spacing: .08em; }
+.auth-card p { color: #66666d; font-size: 13px; }
 
 .auth-card form {
   display: grid;
@@ -817,11 +716,7 @@ button {
   margin-top: 22px;
 }
 
-.auth-card label {
-  color: #aaa;
-  font-size: 12px;
-  margin-top: 5px;
-}
+.auth-card label { color: #aaa; font-size: 12px; margin-top: 5px; }
 
 .auth-card input {
   height: 42px;
@@ -833,12 +728,9 @@ button {
   outline: 0;
 }
 
-.auth-card input:focus {
-  border-color: #55555b;
-}
+.auth-card input:focus { border-color: #55555b; }
 
-.auth-card form button,
-.auth-card > button {
+.auth-card form button, .auth-card > button {
   margin-top: 10px;
   height: 42px;
   border: 0;
@@ -848,10 +740,7 @@ button {
   font-weight: 700;
 }
 
-.auth-card form button:hover,
-.auth-card > button:hover {
-  background: #d9d9dc;
-}
+.auth-card form button:hover, .auth-card > button:hover { background: #d9d9dc; }
 
 .auth-error {
   color: #e7aaaa;
@@ -904,20 +793,14 @@ button {
     flex-direction: column;
   }
 
-  .topbar-actions {
-    width: 100%;
-    flex-wrap: wrap;
-  }
+  .topbar-actions { width: 100%; flex-wrap: wrap; }
 
   .toolbar {
     padding: 18px 4vw 5px;
     flex-direction: column;
   }
 
-  .sort-btn {
-    width: 100%;
-    justify-content: space-between;
-  }
+  .sort-btn { width: 100%; justify-content: space-between; }
 
   .sort-menu {
     left: 0;
@@ -925,58 +808,18 @@ button {
     width: 100%;
   }
 
-  .content {
-    padding: 22px 4vw 60px;
-  }
-
-  .card {
-    width: 145px;
-    flex-basis: 145px;
-  }
-
-  .thumbnail-wrap {
-    height: 200px;
-  }
-
-  .modal-backdrop {
-    padding: 8px;
-  }
-
-  .paper {
-    min-height: 1100px;
-  }
-
-  .paper::before {
-    left: 44px;
-  }
-
-  .paper-inner {
-    padding: 20px 22px 45px 62px;
-  }
-
-  .paper-rings {
-    padding: 0 8px;
-    font-size: 30px;
-  }
-
-  .field {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-
-  .two-col {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .system-info {
-    flex-direction: column;
-  }
-
-  .trash-item {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+  .content { padding: 22px 4vw 60px; }
+  .card { width: 145px; flex-basis: 145px; }
+  .thumbnail-wrap { height: 200px; }
+  .modal-backdrop { padding: 8px; }
+  .paper { min-height: 1100px; }
+  .paper::before { left: 44px; }
+  .paper-inner { padding: 20px 22px 45px 62px; }
+  .paper-rings { padding: 0 8px; font-size: 30px; }
+  .field { grid-template-columns: 1fr; gap: 2px; }
+  .two-col { grid-template-columns: 1fr; gap: 14px; }
+  .system-info { flex-direction: column; }
+  .trash-item { align-items: flex-start; flex-direction: column; }
 }
 
 .remember-option {
@@ -996,9 +839,7 @@ button {
   cursor: pointer;
 }
 
-.remember-option span {
-  font-size: 12px;
-}
+.remember-option span { font-size: 12px; }
 
 .signup-prompt {
   margin-top: 18px;
@@ -1021,6 +862,24 @@ button {
   font-weight: 700;
 }
 
-.signup-prompt .auth-switch:hover {
-  color: #fff !important;
+.signup-prompt .auth-switch:hover { color: #fff !important; }
+
+
+/* Keep Edit/Delete hidden on homepage cards until hover */
+.notepad-card .notepad-card-actions {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.notepad-card:hover .notepad-card-actions,
+.notepad-card:focus-within .notepad-card-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Always show actions inside an opened notepad */
+.notepad-modal .notepad-card-actions {
+  opacity: 1;
+  pointer-events: auto;
 }

@@ -15,7 +15,6 @@ export async function getNotepads(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to fetch notepads.",
@@ -38,7 +37,6 @@ export async function getTrash(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to fetch trash.",
@@ -65,6 +63,7 @@ export async function createNotepad(req, res) {
       amount_paid,
       oc_poc,
       oc_poc_contact,
+      notepad_filled_by,
       duration,
       arrival_date,
       expected_departure_date,
@@ -90,6 +89,7 @@ export async function createNotepad(req, res) {
           amount_paid,
           oc_poc,
           oc_poc_contact,
+          notepad_filled_by,
           duration,
           arrival_date,
           expected_departure_date,
@@ -99,7 +99,7 @@ export async function createNotepad(req, res) {
           $1, $2, $3, $4, $5,
           $6, $7, $8, $9, $10,
           $11, $12, $13, $14, $15,
-          $16, $17, $18, $19, $20
+          $16, $17, $18, $19, $20, $21
         )
         RETURNING *
       `,
@@ -109,33 +109,22 @@ export async function createNotepad(req, res) {
         team_name || "",
         team_leader_name || null,
         team_leader_contact || null,
-
-        boys == null || boys === ""
-          ? 0
-          : Number(boys),
-
-        girls == null || girls === ""
-          ? 0
-          : Number(girls),
-
-        total_members == null ||
-        total_members === ""
+        boys == null || boys === "" ? 0 : Number(boys),
+        girls == null || girls === "" ? 0 : Number(girls),
+        total_members == null || total_members === ""
           ? 0
           : Number(total_members),
-
         mentor_name || null,
         mentor_contact || null,
         mentor_room || null,
         accommodation || null,
         transaction_id || null,
-
-        amount_paid == null ||
-        amount_paid === ""
+        amount_paid == null || amount_paid === ""
           ? null
           : Number(amount_paid),
-
         oc_poc || null,
         oc_poc_contact || null,
+        notepad_filled_by || null,
         duration || null,
         arrival_date || null,
         expected_departure_date || null,
@@ -150,13 +139,13 @@ export async function createNotepad(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to create notepad.",
     });
   }
 }
+
 
 export async function updateNotepad(req, res) {
   try {
@@ -179,6 +168,7 @@ export async function updateNotepad(req, res) {
       amount_paid,
       oc_poc,
       oc_poc_contact,
+      notepad_filled_by,
       duration,
       arrival_date,
       expected_departure_date,
@@ -205,12 +195,40 @@ export async function updateNotepad(req, res) {
           amount_paid = $14,
           oc_poc = $15,
           oc_poc_contact = $16,
-          duration = $17,
-          arrival_date = $18,
-          expected_departure_date = $19,
-          additional_remarks = $20,
-          updated_at = NOW()
-        WHERE id = $21
+          notepad_filled_by = $17,
+          duration = $18,
+          arrival_date = $19,
+          expected_departure_date = $20,
+          additional_remarks = $21,
+
+          updated_at = CASE
+            WHEN
+              college_name IS DISTINCT FROM $1 OR
+              event_name IS DISTINCT FROM $2 OR
+              team_name IS DISTINCT FROM $3 OR
+              team_leader_name IS DISTINCT FROM $4 OR
+              team_leader_contact IS DISTINCT FROM $5 OR
+              boys IS DISTINCT FROM $6 OR
+              girls IS DISTINCT FROM $7 OR
+              total_members IS DISTINCT FROM $8 OR
+              mentor_name IS DISTINCT FROM $9 OR
+              mentor_contact IS DISTINCT FROM $10 OR
+              mentor_room IS DISTINCT FROM $11 OR
+              accommodation IS DISTINCT FROM $12 OR
+              transaction_id IS DISTINCT FROM $13 OR
+              amount_paid IS DISTINCT FROM $14 OR
+              oc_poc IS DISTINCT FROM $15 OR
+              oc_poc_contact IS DISTINCT FROM $16 OR
+              notepad_filled_by IS DISTINCT FROM $17 OR
+              duration IS DISTINCT FROM $18 OR
+              arrival_date IS DISTINCT FROM $19 OR
+              expected_departure_date IS DISTINCT FROM $20 OR
+              additional_remarks IS DISTINCT FROM $21
+            THEN NOW()
+            ELSE updated_at
+          END
+
+        WHERE id = $22
           AND deleted_at IS NULL
         RETURNING *
       `,
@@ -220,38 +238,26 @@ export async function updateNotepad(req, res) {
         team_name || "",
         team_leader_name || null,
         team_leader_contact || null,
-
-        boys == null || boys === ""
-          ? 0
-          : Number(boys),
-
-        girls == null || girls === ""
-          ? 0
-          : Number(girls),
-
-        total_members == null ||
-        total_members === ""
+        boys == null || boys === "" ? 0 : Number(boys),
+        girls == null || girls === "" ? 0 : Number(girls),
+        total_members == null || total_members === ""
           ? 0
           : Number(total_members),
-
         mentor_name || null,
         mentor_contact || null,
         mentor_room || null,
         accommodation || null,
         transaction_id || null,
-
-        amount_paid == null ||
-        amount_paid === ""
+        amount_paid == null || amount_paid === ""
           ? null
           : Number(amount_paid),
-
         oc_poc || null,
         oc_poc_contact || null,
+        notepad_filled_by || null,
         duration || null,
         arrival_date || null,
         expected_departure_date || null,
         additional_remarks || null,
-
         id,
       ]
     );
@@ -270,13 +276,13 @@ export async function updateNotepad(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to update notepad.",
     });
   }
 }
+
 
 export async function deleteNotepad(req, res) {
   try {
@@ -307,7 +313,6 @@ export async function deleteNotepad(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to move notepad to trash.",
@@ -346,7 +351,6 @@ export async function restoreNotepad(req, res) {
     });
   } catch (error) {
     console.error("Database error:", error);
-
     res.status(500).json({
       success: false,
       message: "Failed to restore notepad.",
